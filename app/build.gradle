@@ -1,0 +1,88 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-parcelize'
+    id("com.google.devtools.ksp")
+}
+
+android {
+    namespace 'com.module.config'
+    compileSdk 36
+
+    defaultConfig {
+        applicationId "com.module.config"
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        def BOOLEAN = "boolean"
+        def STRING = "String"
+        def TRUE = "true"
+        def FALSE = "false"
+        def DEV_MODE = "DEV_MODE"
+
+        debug {
+            buildConfigField(BOOLEAN, DEV_MODE, TRUE)
+            versionNameSuffix '-dev'
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            buildConfigField(BOOLEAN, DEV_MODE, FALSE)
+            shrinkResources false
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    android.applicationVariants.configureEach { variant ->
+        variant.outputs.configureEach {
+            def formattedDate = new Date().format('dd.MM.yyyy')
+            outputFileName = "Module_v${variant.versionName}_${formattedDate}.apk"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_11
+        targetCompatibility = JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = "11"
+    }
+
+    buildFeatures {
+        viewBinding true
+        buildConfig true
+    }
+
+    bundle {
+        // split language = false
+        language {
+            enableSplit = false
+        }
+        // split multi screen = false
+        density {
+            enableSplit = false
+        }
+        abi {
+            enableSplit = true
+        }
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.16.0'
+    implementation 'androidx.appcompat:appcompat:1.7.1'
+    implementation 'com.google.android.material:material:1.13.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.2.1'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.3.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.7.0'
+}

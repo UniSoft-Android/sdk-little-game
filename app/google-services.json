@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "1044656559013",
+    "project_id": "module-ga-v2",
+    "storage_bucket": "module-ga-v2.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1044656559013:android:33009ea44d640fdf180e4c",
+        "android_client_info": {
+          "package_name": "com.module.config"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoKDZA2ROelQ35PQ_sMPmCBWCOh_frK9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
