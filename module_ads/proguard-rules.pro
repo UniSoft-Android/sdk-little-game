@@ -20,6 +20,14 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+-keep public class com.module.ads.** {
+    public *;
+}
+
+-keepclassmembers class com.module.ads.** {
+    public <init>(...);
+}
+
 # Keep model
 # keep everything in this package from being removed or renamed
 -keep class com.module.ads.models.** { *; }
@@ -34,6 +42,9 @@
 # keep everything in this package from being renamed only
 -keepnames class com.module.ads.callback.** { *; }
 
+-keep class * implements android.os.Parcelable {
+    public static final android.os.Parcelable$Creator *;
+}
 
 # Keep Anonation
 -keepattributes *Annotation*
