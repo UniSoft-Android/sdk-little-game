@@ -30,7 +30,8 @@ android {
             buildConfigField "String", "banner_splash", "\"ca-app-pub-1939315010587936/1089462211\""
             buildConfigField "String", "open_resume", "\"ca-app-pub-3940256099942544/9257395921\""
 
-            minifyEnabled false
+            minifyEnabled true
+            consumerProguardFiles 'proguard-rules.pro'   // ← Quan trọng cho người dùng library
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -105,7 +106,7 @@ afterEvaluate {
             release(MavenPublication) {
                 groupId = "com.github.UniSoft-Android"
                 artifactId = "base-sdk"
-                version = "1.0"
+                version = "1.2"
 
                 from components.release
             }
