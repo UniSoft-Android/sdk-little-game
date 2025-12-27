@@ -25,4 +25,3 @@ dependencyResolutionManagement {
 rootProject.name = "BaseTemplate"
 include ':app'
 include ':module_ads'
-include ':library'
