@@ -2,19 +2,14 @@ package com.module.config
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.gms.ads.LoadAdError
 import com.module.ads.admob.aoa.OpenAdsManager
-import com.module.ads.admob.inters.IntersInApp
 import com.module.ads.admob.natives.NativeInApp
 import com.module.ads.callback.OnAoaListener
-import com.module.ads.callback.OnInterListener
 import com.module.config.onboard.OnboardActivity
-import java.util.Locale
 
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,7 +63,7 @@ class SplashActivity : AppCompatActivity() {
         OpenAdsManager.getOpenAds().showOpenAds(
             this,
             "ca-app-pub-3940256099942544/9257395921",
-            object : OnAoaListener(){}) {
+            object : OnAoaListener() {}) {
             startActivity(Intent(this@SplashActivity, OnboardActivity::class.java))
             finish()
         }
